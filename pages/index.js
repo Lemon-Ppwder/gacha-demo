@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import GachaDemo from "../components/GachaDemo";
-import Inventory from "../components/Inventory";
-import Shop from "../components/Shop";
+import GachaDemo from "./GachaDemo";
+import Inventory from "./Inventory";
+import Shop from "./Shop";
 
 export default function Home() {
   const [tab, setTab] = useState("gacha");
