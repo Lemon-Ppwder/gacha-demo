@@ -8,8 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "gacha-demo": "file:",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.11",
+    "@types/react": "^19.0.12"
   }
 }
