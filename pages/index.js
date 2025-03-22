@@ -1,21 +1,42 @@
-import { useState } from "react";
-import GachaPage from "../components/GachaPage";
-import InventoryPage from "../components/InventoryPage";
-import ShopPage from "../components/ShopPage";
+import React, { useState } from "react";
+import GachaDemo from "./GachaDemo";
+import Inventory from "./Inventory";
+import Shop from "./Shop";
 
 export default function Home() {
   const [tab, setTab] = useState("gacha");
+  const [inventory, setInventory] = useState([]);
+  const [wallet, setWallet] = useState(0);
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <div className="flex justify-around mb-4">
-        <button onClick={() => setTab("gacha")}>🎰 Gacha</button>
-        <button onClick={() => setTab("inventory")}>📂 Inventory</button>
-        <button onClick={() => setTab("shop")}>🛒 Shop</button>
+    <div className="p-6 max-w-4xl mx-auto space-y-6">
+      <div className="flex justify-around gap-4 text-lg font-semibold">
+        <button onClick={() => setTab("gacha")} className={tab === "gacha" ? "text-blue-600" : ""}>🎰 Gacha</button>
+        <button onClick={() => setTab("inventory")} className={tab === "inventory" ? "text-blue-600" : ""}>📂 Inventory</button>
+        <button onClick={() => setTab("shop")} className={tab === "shop" ? "text-blue-600" : ""}>🛒 Shop</button>
       </div>
-      {tab === "gacha" && <GachaPage />}
-      {tab === "inventory" && <InventoryPage />}
-      {tab === "shop" && <ShopPage />}
+
+      <div className="border p-4 rounded shadow">
+        {tab === "gacha" && (
+          <GachaDemo 
+            wallet={wallet} 
+            setWallet={setWallet} 
+            inventory={inventory} 
+            setInventory={setInventory} 
+          />
+        )}
+        {tab === "inventory" && (
+          <Inventory 
+            inventory={inventory} 
+          />
+        )}
+        {tab === "shop" && (
+          <Shop 
+            wallet={wallet} 
+            setWallet={setWallet} 
+          />
+        )}
+      </div>
     </div>
   );
 }
